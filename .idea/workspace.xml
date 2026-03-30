@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d5eed18e-2d9f-497e-986a-87f47fc8ef8c" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/RIK/Documents/J2/SKILL/Portfolio3" value="3BTY7dHrtWt4LOrSKg7cgSYCMYi" />
+      <entry key="_C:/Users/RIK/Documents/J2/SKILL/Portfolio3 - kopie - kopie" value="3BTxGeLYpK0VLxM6t84g2fcxrf8" />
+    </persistenceIdMap>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3BTY7dHrtWt4LOrSKg7cgSYCMYi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.about.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/RIK/Documents/J2/SKILL/Portfolio3 - kopie - kopie&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.180" />
+        <option value="bundled-python-sdk-85c76a3b01b3-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.180" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d5eed18e-2d9f-497e-986a-87f47fc8ef8c" name="Changes" comment="" />
+      <created>1774514360844</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774514360844</updated>
+      <workItem from="1774514362152" duration="568000" />
+      <workItem from="1774514950220" duration="541000" />
+      <workItem from="1774516753545" duration="1077000" />
+      <workItem from="1774519198224" duration="878000" />
+      <workItem from="1774526768128" duration="586000" />
+      <workItem from="1774527362489" duration="127000" />
+      <workItem from="1774531940292" duration="327000" />
+      <workItem from="1774533206750" duration="1406000" />
+      <workItem from="1774535299925" duration="622000" />
+      <workItem from="1774800019890" duration="1159000" />
+      <workItem from="1774804223949" duration="536000" />
+      <workItem from="1774804791814" duration="169000" />
+      <workItem from="1774805000706" duration="158000" />
+      <workItem from="1774805218936" duration="4555000" />
+      <workItem from="1774811365976" duration="472000" />
+      <workItem from="1774811852554" duration="372000" />
+      <workItem from="1774812286765" duration="1015000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

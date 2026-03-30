@@ -1,0 +1,53 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 809 >>
+stream
+BT
+/F1 24 Tf
+72 780 Td
+(Rik Van den Brande - CV) Tj
+0 -36 Td
+/F1 12 Tf
+(Student Applied Computer Science / Electronics ICT) Tj
+0 -28 Td
+(Focus: software development, AI-supported applications, and project work.) Tj
+0 -28 Td
+(Education: second-year student with project-based experience in programming and web development.) Tj
+0 -28 Td
+(Projects: Semester 1 SKIL2 Campus Event Platform, Semester 2 SKIL2 AI Study Assistant.) Tj
+0 -28 Td
+(Additional work: Task Manager App and Data Dashboard.) Tj
+0 -28 Td
+(Technical skills: Python, Java, C#/.NET, HTML, CSS, JavaScript, React, Git, UML, SQL basics.) Tj
+0 -28 Td
+(Soft skills: teamwork, communication, problem solving, planning, responsibility.) Tj
+0 -28 Td
+(See the portfolio website for detailed project evidence and reflections.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000251 00000 n 
+0000001115 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1188
+%%EOF
