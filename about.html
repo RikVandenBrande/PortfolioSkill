@@ -7,6 +7,20 @@
   <title>Over Mij | Rik Van den Brande Portfolio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="shortcut icon" href="assets/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("portfolio-theme");
+        var systemPrefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+        var theme = storedTheme || (systemPrefersLight ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    }());
+  </script>
   <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
@@ -20,11 +34,6 @@
           <span class="brand__role">Portfolio</span>
         </span>
       </a>
-      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Navigatie openen of sluiten">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
       <nav aria-label="Hoofdnavigatie">
         <ul class="nav__links" id="nav-links">
           <li><a class="nav__link" href="index.html">Home</a></li>
@@ -33,6 +42,19 @@
           <li><a class="nav__link" href="cv.html">CV</a></li>
         </ul>
       </nav>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Schakel naar lichte modus" aria-pressed="true">
+          <span class="theme-toggle__track" aria-hidden="true">
+            <span class="theme-toggle__thumb"></span>
+          </span>
+          <span class="theme-toggle__text" aria-hidden="true">☀</span>
+        </button>
+        <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Navigatie openen of sluiten">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -253,136 +275,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const header = document.getElementById("site-header");
-      const toggle = document.getElementById("nav-toggle");
-      const links = document.getElementById("nav-links");
-
-      function updateHeader() {
-        if (window.scrollY > 12) {
-          header.classList.add("is-scrolled");
-        } else {
-          header.classList.remove("is-scrolled");
-        }
-      }
-
-      function closeMenu() {
-        toggle.setAttribute("aria-expanded", "false");
-        links.classList.remove("is-open");
-      }
-
-      toggle.addEventListener("click", function () {
-        const expanded = toggle.getAttribute("aria-expanded") === "true";
-        toggle.setAttribute("aria-expanded", String(!expanded));
-        links.classList.toggle("is-open");
-      });
-
-      links.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", closeMenu);
-      });
-
-      // Magnetic button effect
-      const buttons = document.querySelectorAll(".btn");
-      buttons.forEach(function (btn) {
-        btn.addEventListener("mousemove", function (e) {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-
-          btn.style.transform = `translateY(-2px) scale(1.02) translate(${x * 0.15}px, ${y * 0.15}px)`;
-        });
-
-        btn.addEventListener("mouseleave", function () {
-          btn.style.transform = "";
-        });
-      });
-
-      document.querySelectorAll(".section-header h2").forEach(function (title) {
-        const text = title.textContent.trim();
-        if (!text || title.querySelector("span")) {
-          return;
-        }
-
-        title.classList.add("glitch-title");
-        title.innerHTML = '<span data-text="' + text.replace(/"/g, "&quot;") + '">' + text + "</span>";
-      });
-
-      const photo = document.querySelector(".hero-card__photo--interactive");
-      if (photo) {
-        function launchFirework(clientX, clientY) {
-          const rect = photo.getBoundingClientRect();
-          const x = clientX - rect.left;
-          const y = clientY - rect.top;
-          const colors = ["#00f5d4", "#9c8cff", "#ff7b8d", "#ffd166", "#eff4ff"];
-          const bursts = 3;
-
-          for (let burstIndex = 0; burstIndex < bursts; burstIndex += 1) {
-            const burst = document.createElement("span");
-            const burstX = Math.min(rect.width - 20, Math.max(20, x + (burstIndex - 1) * 34));
-            const burstY = Math.min(rect.height - 20, Math.max(20, y - Math.abs(burstIndex - 1) * 12));
-
-            burst.className = "hero-card__photo-burst";
-            burst.style.left = burstX + "px";
-            burst.style.top = burstY + "px";
-            burst.style.color = colors[(Math.floor(Math.random() * colors.length) + burstIndex) % colors.length];
-
-            for (let sparkIndex = 0; sparkIndex < 12; sparkIndex += 1) {
-              const spark = document.createElement("span");
-              spark.className = "hero-card__photo-spark";
-              spark.style.setProperty("--angle", (sparkIndex * 30) + "deg");
-              spark.style.setProperty("--distance", (34 + Math.random() * 24) + "px");
-              spark.style.animationDelay = burstIndex * 60 + "ms";
-              burst.appendChild(spark);
-            }
-
-            photo.appendChild(burst);
-            window.setTimeout(function () {
-              burst.remove();
-            }, 950);
-          }
-        }
-
-        photo.addEventListener("click", function (event) {
-          launchFirework(event.clientX, event.clientY);
-        });
-
-        photo.addEventListener("keydown", function (event) {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            const rect = photo.getBoundingClientRect();
-            launchFirework(rect.left + rect.width / 2, rect.top + rect.height / 2);
-          }
-        });
-      }
-
-      const reveals = document.querySelectorAll(".reveal");
-      if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15 });
-
-        reveals.forEach(function (item) {
-          observer.observe(item);
-        });
-      } else {
-        reveals.forEach(function (item) {
-          item.classList.add("is-visible");
-        });
-      }
-
-      requestAnimationFrame(function () {
-        document.body.classList.add("is-ready");
-      });
-
-      updateHeader();
-      window.addEventListener("scroll", updateHeader, { passive: true });
-    }());
-  </script>
+  <script src="site.js"></script>
 </body>
 </html>
