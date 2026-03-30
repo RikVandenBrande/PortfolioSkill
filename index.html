@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Professional e-portfolio of Rik Van den Brande, student Applied Computer Science / Electronics ICT.">
   <title>Home | Rik Van den Brande Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="shortcut icon" href="assets/favicon.svg">
   <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
@@ -53,7 +55,7 @@
         </div>
 
         <aside class="hero-card" aria-label="Profile summary">
-          <div class="hero-card__photo">
+          <div class="hero-card__photo hero-card__photo--interactive" tabindex="0" role="button" aria-label="Vieringseffect afspelen op profielfoto">
             <img src="assets/profile-photo.png" alt="Professional portret van Rik Van den Brande">
           </div>
           <div class="hero-card__meta">
@@ -74,6 +76,7 @@
       <div class="container">
         <div class="section-header reveal">
           <div class="eyebrow">Introductie</div>
+          <br>
         <h2>Over mij</h2>
         <p>
         Dit portfolio dient als een professionele voorstelling van mezelf als student. De website heeft een duidelijke structuur en eenvoudige navigatie, zodat je snel informatie vindt zoals mijn CV, vaardigheden en projecten.
@@ -82,7 +85,7 @@
 
         <div class="grid-three">
 
-          <article class="feature-card reveal">
+          <article class="feature-card feature-card--identity reveal">
             <h3>Wie ik ben</h3>
             <p>
             Ik ben een gemotiveerde student met interesse in technologie en softwareontwikkeling. Ik werk graag aan projecten waarin programmeren, analyseren en samenwerken samenkomen.
@@ -251,6 +254,64 @@
           btn.style.transform = "";
         });
       });
+
+      document.querySelectorAll(".section-header h2").forEach(function (title) {
+        const text = title.textContent.trim();
+        if (!text || title.querySelector("span")) {
+          return;
+        }
+
+        title.classList.add("glitch-title");
+        title.innerHTML = '<span data-text="' + text.replace(/"/g, "&quot;") + '">' + text + "</span>";
+      });
+
+      const photo = document.querySelector(".hero-card__photo--interactive");
+      if (photo) {
+        function launchFirework(clientX, clientY) {
+          const rect = photo.getBoundingClientRect();
+          const x = clientX - rect.left;
+          const y = clientY - rect.top;
+          const colors = ["#00f5d4", "#9c8cff", "#ff7b8d", "#ffd166", "#eff4ff"];
+          const bursts = 3;
+
+          for (let burstIndex = 0; burstIndex < bursts; burstIndex += 1) {
+            const burst = document.createElement("span");
+            const burstX = Math.min(rect.width - 20, Math.max(20, x + (burstIndex - 1) * 34));
+            const burstY = Math.min(rect.height - 20, Math.max(20, y - Math.abs(burstIndex - 1) * 12));
+
+            burst.className = "hero-card__photo-burst";
+            burst.style.left = burstX + "px";
+            burst.style.top = burstY + "px";
+            burst.style.color = colors[(Math.floor(Math.random() * colors.length) + burstIndex) % colors.length];
+
+            for (let sparkIndex = 0; sparkIndex < 12; sparkIndex += 1) {
+              const spark = document.createElement("span");
+              spark.className = "hero-card__photo-spark";
+              spark.style.setProperty("--angle", (sparkIndex * 30) + "deg");
+              spark.style.setProperty("--distance", (34 + Math.random() * 24) + "px");
+              spark.style.animationDelay = burstIndex * 60 + "ms";
+              burst.appendChild(spark);
+            }
+
+            photo.appendChild(burst);
+            window.setTimeout(function () {
+              burst.remove();
+            }, 950);
+          }
+        }
+
+        photo.addEventListener("click", function (event) {
+          launchFirework(event.clientX, event.clientY);
+        });
+
+        photo.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            const rect = photo.getBoundingClientRect();
+            launchFirework(rect.left + rect.width / 2, rect.top + rect.height / 2);
+          }
+        });
+      }
 
       const reveals = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {

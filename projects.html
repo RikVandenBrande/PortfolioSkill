@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Projects and achievements portfolio of Rik Van den Brande.">
   <title>Projects / Achievements | Rik Van den Brande Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="shortcut icon" href="assets/favicon.svg">
   <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
@@ -468,6 +470,16 @@
 
       links.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", closeMenu);
+      });
+
+      document.querySelectorAll(".section-header h2").forEach(function (title) {
+        const text = title.textContent.trim();
+        if (!text || title.querySelector("span")) {
+          return;
+        }
+
+        title.classList.add("glitch-title");
+        title.innerHTML = '<span data-text="' + text.replace(/"/g, "&quot;") + '">' + text + "</span>";
       });
 
       const reveals = document.querySelectorAll(".reveal");
