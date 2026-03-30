@@ -1,5 +1,6 @@
 (function () {
   const THEME_KEY = "portfolio-theme";
+  const PAGE_TRANSITION_KEY = "portfolio-page-transition";
   const root = document.documentElement;
   const header = document.getElementById("site-header");
   const navToggle = document.getElementById("nav-toggle");
@@ -7,6 +8,8 @@
   const themeToggle = document.getElementById("theme-toggle");
   const mediaQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
   const isDutch = (root.getAttribute("lang") || "").toLowerCase().indexOf("nl") === 0;
+  let themeShiftTimer = null;
+  let pageTransitionTimer = null;
 
   function getStoredTheme() {
     try {
@@ -41,6 +44,130 @@
         return;
       }
     }
+  }
+
+  function triggerThemeShift() {
+    if (!document.body) {
+      return;
+    }
+
+    document.body.classList.remove("is-theme-shifting");
+    void document.body.offsetWidth;
+    document.body.classList.add("is-theme-shifting");
+
+    if (themeShiftTimer) {
+      window.clearTimeout(themeShiftTimer);
+    }
+
+    themeShiftTimer = window.setTimeout(function () {
+      document.body.classList.remove("is-theme-shifting");
+    }, 760);
+  }
+
+  function setTransitionState(className, duration) {
+    if (!document.body) {
+      return;
+    }
+
+    document.body.classList.remove("is-theme-shifting", "is-page-leaving", "is-page-arriving");
+
+    if (className) {
+      void document.body.offsetWidth;
+      document.body.classList.add(className);
+    }
+
+    if (pageTransitionTimer) {
+      window.clearTimeout(pageTransitionTimer);
+      pageTransitionTimer = null;
+    }
+
+    if (className && duration) {
+      pageTransitionTimer = window.setTimeout(function () {
+        document.body.classList.remove(className);
+      }, duration);
+    }
+  }
+
+  function markIncomingTransition() {
+    try {
+      sessionStorage.setItem(PAGE_TRANSITION_KEY, String(Date.now()));
+    } catch (error) {
+      return;
+    }
+  }
+
+  function consumeIncomingTransition() {
+    try {
+      const value = sessionStorage.getItem(PAGE_TRANSITION_KEY);
+
+      if (!value) {
+        return false;
+      }
+
+      sessionStorage.removeItem(PAGE_TRANSITION_KEY);
+      return Date.now() - Number(value) < 2400;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function isInternalPageLink(link) {
+    if (!link || !link.href) {
+      return false;
+    }
+
+    if (link.hasAttribute("download") || link.target === "_blank") {
+      return false;
+    }
+
+    const href = link.getAttribute("href") || "";
+    if (!href || href.charAt(0) === "#" || href.indexOf("mailto:") === 0 || href.indexOf("tel:") === 0) {
+      return false;
+    }
+
+    const url = new URL(link.href, window.location.href);
+    const isSameOrigin = url.origin === window.location.origin;
+    const isHtmlPage = /\.html(?:#.*)?$/i.test(url.pathname + url.hash) || /\/$/.test(url.pathname);
+    const isSamePageHashOnly = url.pathname === window.location.pathname && url.search === window.location.search && url.hash;
+
+    return isSameOrigin && isHtmlPage && !isSamePageHashOnly;
+  }
+
+  function bindPageTransitions() {
+    document.addEventListener("click", function (event) {
+      const target = event.target;
+      const link = target && target.closest ? target.closest("a[href]") : null;
+
+      if (!link || !isInternalPageLink(link)) {
+        return;
+      }
+
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      if (document.body.classList.contains("is-page-leaving")) {
+        event.preventDefault();
+        return;
+      }
+
+      const destination = link.href;
+      closeMenu();
+      markIncomingTransition();
+      setTransitionState("is-page-leaving", 720);
+
+      event.preventDefault();
+      window.setTimeout(function () {
+        window.location.href = destination;
+      }, 520);
+    }, true);
   }
 
   function updateHeader() {
@@ -80,6 +207,7 @@
     themeToggle.addEventListener("click", function () {
       const currentTheme = root.getAttribute("data-theme") || getStoredTheme() || getPreferredTheme();
       const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      triggerThemeShift();
       applyTheme(nextTheme, true);
     });
   }
@@ -192,12 +320,20 @@
     document.body.classList.add("is-ready");
   });
 
+  if (consumeIncomingTransition()) {
+    setTransitionState("is-page-arriving", 820);
+  }
+
   applyTheme(root.getAttribute("data-theme") || getStoredTheme() || getPreferredTheme(), false);
+  bindPageTransitions();
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
   window.addEventListener("resize", function () {
     if (window.innerWidth > 760) {
       closeMenu();
     }
+  });
+  window.addEventListener("pageshow", function () {
+    document.body.classList.remove("is-page-leaving");
   });
 }());
