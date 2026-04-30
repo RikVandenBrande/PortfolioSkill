@@ -248,53 +248,11 @@
     title.innerHTML = '<span data-text="' + text.replace(/"/g, "&quot;") + '">' + text + "</span>";
   });
 
-  const photo = document.querySelector(".hero-card__photo--interactive");
-  if (photo) {
-    function launchFirework(clientX, clientY) {
-      const rect = photo.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
-      const colors = ["#00f5d4", "#9c8cff", "#ff7b8d", "#ffd166", "#eff4ff"];
-      const bursts = 3;
+  // Photo interaction removed intentionally (zoom / interactive bursts caused layout/overlay issues).
+  // Previously there was a click / keyboard handler that added decorative bursts inside the
+  // header photo. The feature was removed because it interfered with page scrolling and
+  // produced an overlay-like effect. Keeping this comment as a record of the change.
 
-      for (let burstIndex = 0; burstIndex < bursts; burstIndex += 1) {
-        const burst = document.createElement("span");
-        const burstX = Math.min(rect.width - 20, Math.max(20, x + (burstIndex - 1) * 34));
-        const burstY = Math.min(rect.height - 20, Math.max(20, y - Math.abs(burstIndex - 1) * 12));
-
-        burst.className = "hero-card__photo-burst";
-        burst.style.left = burstX + "px";
-        burst.style.top = burstY + "px";
-        burst.style.color = colors[(Math.floor(Math.random() * colors.length) + burstIndex) % colors.length];
-
-        for (let sparkIndex = 0; sparkIndex < 12; sparkIndex += 1) {
-          const spark = document.createElement("span");
-          spark.className = "hero-card__photo-spark";
-          spark.style.setProperty("--angle", (sparkIndex * 30) + "deg");
-          spark.style.setProperty("--distance", (34 + Math.random() * 24) + "px");
-          spark.style.animationDelay = burstIndex * 60 + "ms";
-          burst.appendChild(spark);
-        }
-
-        photo.appendChild(burst);
-        window.setTimeout(function () {
-          burst.remove();
-        }, 950);
-      }
-    }
-
-    photo.addEventListener("click", function (event) {
-      launchFirework(event.clientX, event.clientY);
-    });
-
-    photo.addEventListener("keydown", function (event) {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        const rect = photo.getBoundingClientRect();
-        launchFirework(rect.left + rect.width / 2, rect.top + rect.height / 2);
-      }
-    });
-  }
 
   const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {

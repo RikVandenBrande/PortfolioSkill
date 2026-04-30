@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d5eed18e-2d9f-497e-986a-87f47fc8ef8c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CV_RikVandenBrande.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/CV_RikVandenBrande.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/favicon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cv.html" beforeDir="false" afterPath="$PROJECT_DIR$/cv.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/portfolio.css" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/site.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +22,15 @@
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
+      <entry key="_C:/Users/RIK/Documents/J2/PortfolioSkill" value="3BfBd5L6trJnnUHShKV4fLn3l0e" />
       <entry key="_C:/Users/RIK/Documents/J2/SKILL/Portfolio3" value="3BTY7dHrtWt4LOrSKg7cgSYCMYi" />
       <entry key="_C:/Users/RIK/Documents/J2/SKILL/Portfolio3 - kopie - kopie" value="3BTxGeLYpK0VLxM6t84g2fcxrf8" />
       <entry key="_C:/Users/RIK/Documents/J2/SKILL/PortfolioSkill" value="3Bect1lHi91GQgVSLX77fC0nfmt" />
       <entry key="_C:/Users/RIK/Documents/J2/SKILL/PortfolioSkill - kopie" value="3Bevwmt0mabGAhmRHTdlfRU0AlN" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Agent" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,12 +41,12 @@
     &quot;assignee&quot;: &quot;RikVandenBrande&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/RikVandenBrande/PortfolioSkill.git&quot;,
-    &quot;accountId&quot;: &quot;21ffd0a7-595e-4a62-86d3-b398dac6a29e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RikVandenBrande/PortfolioSkill.git",
+    "accountId": "21ffd0a7-595e-4a62-86d3-b398dac6a29e"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -45,22 +55,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.about.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/RIK/Documents/J2/SKILL/PortfolioSkill",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.about.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.cv.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.projects.html.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.site.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/RIK/Documents/J2/PortfolioSkill&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -114,6 +129,23 @@
       <workItem from="1774863401908" duration="284000" />
       <workItem from="1774867655974" duration="418000" />
       <workItem from="1774868091923" duration="90000" />
+      <workItem from="1774870330219" duration="109000" />
+      <workItem from="1777358646993" duration="3333000" />
+      <workItem from="1777366024898" duration="115000" />
+      <workItem from="1777366231326" duration="364000" />
+      <workItem from="1777366611244" duration="831000" />
+      <workItem from="1777539907573" duration="426000" />
+      <workItem from="1777540365527" duration="543000" />
+      <workItem from="1777540938390" duration="319000" />
+      <workItem from="1777541275695" duration="264000" />
+      <workItem from="1777541557319" duration="283000" />
+      <workItem from="1777541855430" duration="39000" />
+      <workItem from="1777542135488" duration="234000" />
+      <workItem from="1777542391284" duration="228000" />
+      <workItem from="1777542821068" duration="1444000" />
+      <workItem from="1777555036279" duration="1556000" />
+      <workItem from="1777562428221" duration="1244000" />
+      <workItem from="1777563777164" duration="44000" />
     </task>
     <servers />
   </component>
